@@ -3,6 +3,13 @@
 Allow to display some social network.
 This modules come from element to allow display inside products descripion page
 
+Inside the modules you have :
+- digg
+- Email
+- Linkedin
+- Pinterest
+- Twitter
+* Twitter button
 
 - The language files in English and French
 
