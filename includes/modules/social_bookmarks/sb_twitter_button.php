@@ -38,7 +38,7 @@
     }
 
     public function getOutput() {
-      $params = array('url=' . urlencode(CLICSHOPPING::link(null, 'Products&Description&products_id=' . $_GET['products_id'])));
+      $params = array('url=' . urlencode(CLICSHOPPING::link(null, 'Products&Description&products_id=' . (int)$_GET['products_id'])));
 
       if ( strlen(MODULE_SOCIAL_BOOKMARKS_TWITTER_BUTTON_ACCOUNT) > 0 ) {
         $params[] = 'via=' . urlencode(MODULE_SOCIAL_BOOKMARKS_TWITTER_BUTTON_ACCOUNT);

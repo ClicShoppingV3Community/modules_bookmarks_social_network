@@ -40,7 +40,7 @@
     public function getOutput() {
       $CLICSHOPPING_Template = Registry::get('Template');
 
-      return '<a href="http://twitter.com/home?status=' . urlencode(CLICSHOPPING::link(null, 'Products&Description&products_id=' . $_GET['products_id'])) . '" target="_blank" rel="noreferrer">' . HTML::image(HTTP::getShopUrlDomain() . $CLICSHOPPING_Template->getDirectoryTemplateImages() . 'icons/social_bookmarks/' . $this->icon,  HTML::outputProtected($this->public_title)) . '</a>';
+      return '<a href="http://twitter.com/home?status=' . urlencode(CLICSHOPPING::link(null, 'Products&Description&products_id=' . (int)$_GET['products_id'])) . '" target="_blank" rel="noreferrer">' . HTML::image(HTTP::getShopUrlDomain() . $CLICSHOPPING_Template->getDirectoryTemplateImages() . 'icons/social_bookmarks/' . $this->icon,  HTML::outputProtected($this->public_title)) . '</a>';
     }
 
     public function isEnabled() {
