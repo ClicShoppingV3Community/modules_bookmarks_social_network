@@ -39,13 +39,13 @@
       $CLICSHOPPING_Template = Registry::get('Template');
       $CLICSHOPPING_Language = Registry::get('Language');
 
-      if (isset($_GET['products_id']) && isset($_GET['Products']) ) {
+      if ($CLICSHOPPING_ProductsCommon->getID() && isset($_GET['Products']) ) {
 
         $content_width = (int)MODULE_PRODUCTS_INFO_SOCIAL_NETWORK_CONTENT_WIDTH;
         $text_position = MODULE_PRODUCTS_INFO_SOCIAL_NETWORK_POSITION;
 
         if (defined('MODULE_SOCIAL_BOOKMARKS_INSTALLED')) {
-          if ( isset($_GET['products_id']) && defined('MODULE_SOCIAL_BOOKMARKS_INSTALLED') && !is_null(MODULE_SOCIAL_BOOKMARKS_INSTALLED) ) {
+          if ($CLICSHOPPING_ProductsCommon->getID() && defined('MODULE_SOCIAL_BOOKMARKS_INSTALLED') && !is_null(MODULE_SOCIAL_BOOKMARKS_INSTALLED) ) {
             $sbm_array = explode(';', MODULE_SOCIAL_BOOKMARKS_INSTALLED);
 
             $social_bookmarks = [];
@@ -85,7 +85,7 @@
         $social_bookmarks = '<!-- Start $products_barcode -->' . "\n";
 
         ob_start();
-        require($CLICSHOPPING_Template->getTemplateModules($this->group . '/content/products_info_social_network'));
+        require_once($CLICSHOPPING_Template->getTemplateModules($this->group . '/content/products_info_social_network'));
         $social_bookmarks .= ob_get_clean();
 
         $social_bookmarks .= '<!-- $products_barcode -->' . "\n";
