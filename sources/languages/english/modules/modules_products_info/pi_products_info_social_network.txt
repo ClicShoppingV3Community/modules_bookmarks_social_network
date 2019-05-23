@@ -1,3 +1,2 @@
-module_products_info_social_network_tilte = Do you to want to display the social network
-module_products_info_social_network_description = Display the social network. It's managed by the module Configuation / SEO / Social network
-module_products_info_social_network_text_share = Share this product on your social network
+module_products_info_social_network_tilte = do you want to display th social network ?
+module_products_info_social_network_description = display th social network ?

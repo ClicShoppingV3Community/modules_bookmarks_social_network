@@ -1,20 +1,21 @@
 <?php
-/**
- *
- *  @copyright 2008 - https://www.clicshopping.org
- *  @Brand : ClicShopping(Tm) at Inpi all right Reserved
- *  @Licence GPL 2 & MIT
- *  @licence MIT - Portion of osCommerce 2.4
- *  @Info : https://www.clicshopping.org/forum/trademark/
- *
- */
+  /**
+   *
+   * @copyright 2008 - https://www.clicshopping.org
+   * @Brand : ClicShopping(Tm) at Inpi all right Reserved
+   * @Licence GPL 2 & MIT
+   * @licence MIT - Portion of osCommerce 2.4
+   * @Info : https://www.clicshopping.org/forum/trademark/
+   *
+   */
 
   use ClicShopping\OM\CLICSHOPPING;
   use ClicShopping\OM\Registry;
   use ClicShopping\OM\HTML;
   use ClicShopping\OM\HTTP;
 
-  class sb_pinterest {
+  class sb_pinterest
+  {
     public $code;
     public $title;
     public $description;
@@ -22,7 +23,8 @@
     public $enabled = false;
     public $icon = 'pinterest.png';
 
-    public function __construct() {
+    public function __construct()
+    {
       $this->code = get_class($this);
       $this->group = basename(__DIR__);
 
@@ -30,13 +32,14 @@
       $this->public_title = CLICSHOPPING::getDef('module_social_bookmarks_pinterest_public_title');
       $this->description = CLICSHOPPING::getDef('module_social_bookmarks_pinterest_description');
 
-      if ( defined('MODULE_SOCIAL_BOOKMARKS_PINTEREST_STATUS') ) {
+      if (defined('MODULE_SOCIAL_BOOKMARKS_PINTEREST_STATUS')) {
         $this->sort_order = MODULE_SOCIAL_BOOKMARKS_PINTEREST_SORT_ORDER;
         $this->enabled = (MODULE_SOCIAL_BOOKMARKS_PINTEREST_STATUS == 'True');
       }
     }
 
-    public function getOutput() {
+    public function getOutput()
+    {
 
       $CLICSHOPPING_Template = Registry::get('Template');
 
@@ -74,7 +77,7 @@
 // url
       $params['url'] = CLICSHOPPING::link(null, 'Products&Description&products_id=' . (int)$_GET['products_id']);
 
-      $output ='<!-- Pinterest Button start -->'."\n";
+      $output = '<!-- Pinterest Button start -->' . "\n";
       $output = '<a href="http://pinterest.com/pin/create/button/?';
 
       foreach ($params as $key => $value) {
@@ -83,30 +86,34 @@
 
       $output = substr($output, 0, -1); //remove last & from the url
 
-      $icon = HTML::image(HTTP::getShopUrlDomain() . $CLICSHOPPING_Template->getDirectoryTemplateImages() . 'icons/social_bookmarks/' . $this->icon,  HTML::outputProtected($this->public_title));
+      $icon = HTML::image(HTTP::getShopUrlDomain() . $CLICSHOPPING_Template->getDirectoryTemplateImages() . 'icons/social_bookmarks/' . $this->icon, HTML::outputProtected($this->public_title));
 
       $output .= '" class="pin-it-button" count-layout="' . strtolower(MODULE_SOCIAL_BOOKMARKS_PINTEREST_BUTTON_COUNT_POSITION) . '">' . $icon . '</a>';
-      $output .='<!-- Pinterest Button END -->'."\n";
+      $output .= '<!-- Pinterest Button END -->' . "\n";
 
       return $output;
     }
 
-    public function isEnabled() {
+    public function isEnabled()
+    {
       return $this->enabled;
     }
 
-    public function getPublicTitle() {
+    public function getPublicTitle()
+    {
       return $this->public_title;
     }
 
-    public function check() {
+    public function check()
+    {
       return defined('MODULE_SOCIAL_BOOKMARKS_PINTEREST_STATUS');
     }
 
-    public function install() {
+    public function install()
+    {
       $CLICSHOPPING_Db = Registry::get('Db');
 
-       $CLICSHOPPING_Db->save('configuration', [
+      $CLICSHOPPING_Db->save('configuration', [
           'configuration_title' => 'Enable Pinterest Module',
           'configuration_key' => 'MODULE_SOCIAL_BOOKMARKS_PINTEREST_STATUS',
           'configuration_value' => 'True',
@@ -142,15 +149,17 @@
       );
     }
 
-    public function remove() {
+    public function remove()
+    {
       return Registry::get('Db')->exec('delete from :table_configuration where configuration_key in ("' . implode('", "', $this->keys()) . '")');
     }
 
-    public function keys() {
+    public function keys()
+    {
       return array('MODULE_SOCIAL_BOOKMARKS_PINTEREST_STATUS',
-                   'MODULE_SOCIAL_BOOKMARKS_PINTEREST_BUTTON_COUNT_POSITION',
-                   'MODULE_SOCIAL_BOOKMARKS_PINTEREST_SORT_ORDER'
-                  );
+        'MODULE_SOCIAL_BOOKMARKS_PINTEREST_BUTTON_COUNT_POSITION',
+        'MODULE_SOCIAL_BOOKMARKS_PINTEREST_SORT_ORDER'
+      );
     }
   }
 

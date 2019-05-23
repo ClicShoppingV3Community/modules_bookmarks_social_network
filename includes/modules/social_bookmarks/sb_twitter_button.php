@@ -1,20 +1,21 @@
 <?php
-/**
- *
- *  @copyright 2008 - https://www.clicshopping.org
- *  @Brand : ClicShopping(Tm) at Inpi all right Reserved
- *  @Licence GPL 2 & MIT
- *  @licence MIT - Portion of osCommerce 2.4
- *  @Info : https://www.clicshopping.org/forum/trademark/
- *
- */
+  /**
+   *
+   * @copyright 2008 - https://www.clicshopping.org
+   * @Brand : ClicShopping(Tm) at Inpi all right Reserved
+   * @Licence GPL 2 & MIT
+   * @licence MIT - Portion of osCommerce 2.4
+   * @Info : https://www.clicshopping.org/forum/trademark/
+   *
+   */
 
   use ClicShopping\OM\CLICSHOPPING;
   use ClicShopping\OM\Registry;
   use ClicShopping\OM\HTML;
   use ClicShopping\OM\HTTP;
 
-  class sb_twitter_button {
+  class sb_twitter_button
+  {
     public $code;
     public $title;
     public $description;
@@ -22,7 +23,8 @@
     public $enabled = false;
     public $icon;
 
-    public function __construct() {
+    public function __construct()
+    {
       $this->code = get_class($this);
       $this->group = basename(__DIR__);
       $this->icon = 'twitter.png';
@@ -31,26 +33,27 @@
       $this->public_title = CLICSHOPPING::getDef('module_social_bookmarks_twitter_button_public_title');
       $this->description = CLICSHOPPING::getDef('module_social_bookmarks_twitter_button_description');
 
-      if ( defined('MODULE_SOCIAL_BOOKMARKS_TWITTER_BUTTON_STATUS') ) {
+      if (defined('MODULE_SOCIAL_BOOKMARKS_TWITTER_BUTTON_STATUS')) {
         $this->sort_order = MODULE_SOCIAL_BOOKMARKS_TWITTER_BUTTON_SORT_ORDER;
         $this->enabled = (MODULE_SOCIAL_BOOKMARKS_TWITTER_BUTTON_STATUS == 'True');
       }
     }
 
-    public function getOutput() {
+    public function getOutput()
+    {
       $params = array('url=' . urlencode(CLICSHOPPING::link(null, 'Products&Description&products_id=' . (int)$_GET['products_id'])));
 
-      if ( strlen(MODULE_SOCIAL_BOOKMARKS_TWITTER_BUTTON_ACCOUNT) > 0 ) {
+      if (strlen(MODULE_SOCIAL_BOOKMARKS_TWITTER_BUTTON_ACCOUNT) > 0) {
         $params[] = 'via=' . urlencode(MODULE_SOCIAL_BOOKMARKS_TWITTER_BUTTON_ACCOUNT);
       }
 
-      if ( strlen(MODULE_SOCIAL_BOOKMARKS_TWITTER_BUTTON_RELATED_ACCOUNT) > 0 ) {
+      if (strlen(MODULE_SOCIAL_BOOKMARKS_TWITTER_BUTTON_RELATED_ACCOUNT) > 0) {
         $params[] = 'related=' . urlencode(MODULE_SOCIAL_BOOKMARKS_TWITTER_BUTTON_RELATED_ACCOUNT) . ((strlen(MODULE_SOCIAL_BOOKMARKS_TWITTER_BUTTON_RELATED_ACCOUNT_DESC) > 0) ? ':' . urlencode(MODULE_SOCIAL_BOOKMARKS_TWITTER_BUTTON_RELATED_ACCOUNT_DESC) : '');
       }
 
-      if ( MODULE_SOCIAL_BOOKMARKS_TWITTER_BUTTON_COUNT_POSITION == 'Vertical' ) {
+      if (MODULE_SOCIAL_BOOKMARKS_TWITTER_BUTTON_COUNT_POSITION == 'Vertical') {
         $params[] = 'count=vertical';
-      } elseif ( MODULE_SOCIAL_BOOKMARKS_TWITTER_BUTTON_COUNT_POSITION == 'None' ) {
+      } elseif (MODULE_SOCIAL_BOOKMARKS_TWITTER_BUTTON_COUNT_POSITION == 'None') {
         $params[] = 'count=none';
       }
 
@@ -59,23 +62,28 @@
       return '<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script><a href="http://twitter.com/share?' . $params . '" target="_blank" rel="noreferrer" class="twitter-share-button">' . HTML::outputProtected($this->public_title) . '</a>';
     }
 
-    public function isEnabled() {
+    public function isEnabled()
+    {
       return $this->enabled;
     }
 
-    public function getIcon() {
+    public function getIcon()
+    {
       return $this->icon;
     }
 
-    public function getPublicTitle() {
+    public function getPublicTitle()
+    {
       return $this->public_title;
     }
 
-    public function check() {
+    public function check()
+    {
       return defined('MODULE_SOCIAL_BOOKMARKS_TWITTER_BUTTON_STATUS');
     }
 
-    public function install() {
+    public function install()
+    {
       $CLICSHOPPING_Db = Registry::get('Db');
 
       $CLICSHOPPING_Db->save('configuration', [
@@ -147,17 +155,19 @@
       );
     }
 
-    public function remove() {
+    public function remove()
+    {
       return Registry::get('Db')->exec('delete from :table_configuration where configuration_key in ("' . implode('", "', $this->keys()) . '")');
     }
 
-    public function keys() {
+    public function keys()
+    {
       return array('MODULE_SOCIAL_BOOKMARKS_TWITTER_BUTTON_STATUS',
-                   'MODULE_SOCIAL_BOOKMARKS_TWITTER_BUTTON_ACCOUNT',
-                   'MODULE_SOCIAL_BOOKMARKS_TWITTER_BUTTON_RELATED_ACCOUNT',
-                   'MODULE_SOCIAL_BOOKMARKS_TWITTER_BUTTON_RELATED_ACCOUNT_DESC',
-                   'MODULE_SOCIAL_BOOKMARKS_TWITTER_BUTTON_COUNT_POSITION',
-                   'MODULE_SOCIAL_BOOKMARKS_TWITTER_BUTTON_SORT_ORDER'
-                  );
+        'MODULE_SOCIAL_BOOKMARKS_TWITTER_BUTTON_ACCOUNT',
+        'MODULE_SOCIAL_BOOKMARKS_TWITTER_BUTTON_RELATED_ACCOUNT',
+        'MODULE_SOCIAL_BOOKMARKS_TWITTER_BUTTON_RELATED_ACCOUNT_DESC',
+        'MODULE_SOCIAL_BOOKMARKS_TWITTER_BUTTON_COUNT_POSITION',
+        'MODULE_SOCIAL_BOOKMARKS_TWITTER_BUTTON_SORT_ORDER'
+      );
     }
   }

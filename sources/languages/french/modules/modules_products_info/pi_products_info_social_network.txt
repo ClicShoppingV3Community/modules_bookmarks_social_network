@@ -1,3 +1,2 @@
-module_products_info_social_network_tilte = Souhaitez vous afficher les réseaux sociaux ?
-module_products_info_social_network_description = Afficher les réseaux sociaux. Les réseaux sont gérés par le menu d'administration Configuation / SEO / Social network
-module_products_info_social_network_text_share = Partager ce produit sur vos réseaux sociaux
+module_products_info_social_network_tilte = Souhaitez-vous afficher les réseaux sociaux
+module_products_info_social_network_description = Afficher les réseaux sociaux
