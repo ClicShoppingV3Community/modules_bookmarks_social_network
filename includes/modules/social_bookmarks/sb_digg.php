@@ -49,7 +49,7 @@
     {
       $CLICSHOPPING_Template = Registry::get('Template');
 
-      $link = '<a href="http://digg.com/submit?url=' . urlencode(CLICSHOPPING::link(null, 'Products&Description&products_id=' . (int)$_GET['products_id'])) . '" target="_blank" rel="noreferrer">' . HTML::image(HTTP::getShopUrlDomain() . $CLICSHOPPING_Template->getDirectoryTemplateImages() . 'icons/social_bookmarks/' . $this->icon, HTML::outputProtected($this->public_title)) . '</a>';
+      $link = '<a href="http://digg.com/submit?url=' . urlencode(CLICSHOPPING::link(null, 'Products&Description&products_id=' . (int)$_GET['products_id'])) . '" target="_blank" rel="noopener">' . HTML::image(HTTP::getShopUrlDomain() . $CLICSHOPPING_Template->getDirectoryTemplateImages() . 'icons/social_bookmarks/' . $this->icon, HTML::outputProtected($this->public_title)) . '</a>';
 
       return $link;
     }

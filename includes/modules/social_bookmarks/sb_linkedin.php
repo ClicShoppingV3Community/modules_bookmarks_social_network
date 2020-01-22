@@ -40,7 +40,7 @@
 
     public function getOutput()
     {
-      return '<a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=' . urlencode(CLICSHOPPING::link(null, 'Products&Description&products_id=' . (int)$_GET['products_id'], false)) . '" target="_blank" rel="noreferrer"><img src="' . 'sources/images/icons/social_bookmarks/' . $this->icon . '" border="0" title="' . HTML::outputProtected($this->public_title) . '"  alt="' . HTML::outputProtected($this->public_title) . '"/></a>';
+      return '<a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=' . urlencode(CLICSHOPPING::link(null, 'Products&Description&products_id=' . (int)$_GET['products_id'], false)) . '" target="_blank" rel="noopener"><img src="' . 'sources/images/icons/social_bookmarks/' . $this->icon . '" border="0" title="' . HTML::outputProtected($this->public_title) . '"  alt="' . HTML::outputProtected($this->public_title) . '"/></a>';
 
     }
 
