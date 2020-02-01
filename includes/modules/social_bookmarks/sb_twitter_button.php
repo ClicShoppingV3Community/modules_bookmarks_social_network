@@ -59,7 +59,7 @@
 
       $params = implode('&', $params);
 
-      return '<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script><a href="http://twitter.com/share?' . $params . '" target="_blank" rel="noopener" class="twitter-share-button">' . HTML::outputProtected($this->public_title) . '</a>';
+      return '<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script><a href="http://twitter.com/share?' . $params . '" target="_blank" rel="noreferrer" class="twitter-share-button">' . HTML::outputProtected($this->public_title) . '</a>';
     }
 
     public function isEnabled()
