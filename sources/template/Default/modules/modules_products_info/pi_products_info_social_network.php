@@ -39,13 +39,13 @@
       $CLICSHOPPING_Template = Registry::get('Template');
       $CLICSHOPPING_Language = Registry::get('Language');
 
-      if ($CLICSHOPPING_ProductsCommon->getID() && isset($_GET['Products']) ) {
+      if ($CLICSHOPPING_ProductsCommon->getID() && isset($_GET['Products'])) {
 
         $content_width = (int)MODULE_PRODUCTS_INFO_SOCIAL_NETWORK_CONTENT_WIDTH;
         $text_position = MODULE_PRODUCTS_INFO_SOCIAL_NETWORK_POSITION;
 
         if (defined('MODULE_SOCIAL_BOOKMARKS_INSTALLED')) {
-          if ($CLICSHOPPING_ProductsCommon->getID() && defined('MODULE_SOCIAL_BOOKMARKS_INSTALLED') && !is_null(MODULE_SOCIAL_BOOKMARKS_INSTALLED) ) {
+          if ($CLICSHOPPING_ProductsCommon->getID() && defined('MODULE_SOCIAL_BOOKMARKS_INSTALLED') && !is_null(MODULE_SOCIAL_BOOKMARKS_INSTALLED)) {
             $sbm_array = explode(';', MODULE_SOCIAL_BOOKMARKS_INSTALLED);
 
             $social_bookmarks = [];
@@ -53,12 +53,12 @@
             foreach ( $sbm_array as $sbm ) {
               $class = basename($sbm, '.php');
 
-              if (!class_exists($class) ) {
+              if (!class_exists($class)) {
                 $CLICSHOPPING_Language->loadDefinitions('modules/social_bookmarks/' . pathinfo($sbm, PATHINFO_FILENAME));
                 include('includes/modules/social_bookmarks/' . $class . '.php');
               }
 
-              if ( !class_exists($class) ) {
+              if ( !class_exists($class)) {
                 if (is_file($CLICSHOPPING_Template->getSiteTemplateLanguageDirectory() . '/' . $CLICSHOPPING_Language->get('directory') . DIRECTORY_SEPARATOR . 'product_info.php')) {
                   include($CLICSHOPPING_Template->getSiteTemplateLanguageDirectory() . '/' . $CLICSHOPPING_Language->get('directory') . DIRECTORY_SEPARATOR . 'modules/social_bookmarks' . DIRECTORY_SEPARATOR . $sbm);
                 } else {
@@ -70,12 +70,12 @@
 
               $sb = new $class();
 
-              if ( $sb->isEnabled() ) {
+              if ( $sb->isEnabled()) {
                 $social_bookmarks[] = $sb->getOutput();
               }
             }
 
-            if ( !empty($social_bookmarks) ) {
+            if ( !empty($social_bookmarks)) {
               $social_network = implode(' ', $social_bookmarks);
 
             }
