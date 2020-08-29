@@ -17,10 +17,10 @@
   class sb_pinterest
   {
     public $code;
-    public $title;
-    public $description;
-    public $sort_order;
-    public $enabled = false;
+    public string $title;
+    public string $description;
+    public ?int $sort_order = 0;
+    public bool $enabled = false;
     public $icon = 'pinterest.png';
 
     public function __construct()

@@ -17,10 +17,10 @@
   class sb_twitter
   {
     public $code;
-    public $title;
-    public $description;
-    public $sort_order;
-    public $enabled = false;
+    public string $title;
+    public string $description;
+    public ?int $sort_order = 0;
+    public bool $enabled = false;
     public $icon;
 
     public function __construct()
