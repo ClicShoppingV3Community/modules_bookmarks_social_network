@@ -14,8 +14,8 @@
   use ClicShopping\OM\CLICSHOPPING;
 
   class pi_products_info_social_network {
-    public $code;
-    public $group;
+    public string $code;
+    public string $group;
     public string $title;
     public string $description;
     public ?int $sort_order = 0;
@@ -28,7 +28,7 @@
       $this->title = CLICSHOPPING::getDef('module_products_info_social_network_tilte');
       $this->description = CLICSHOPPING::getDef('module_products_info_social_network_description');
 
-      if (defined('MODULE_PRODUCTS_INFO_SOCIAL_NETWORK_STATUS')) {
+      if (\defined('MODULE_PRODUCTS_INFO_SOCIAL_NETWORK_STATUS')) {
         $this->sort_order = MODULE_PRODUCTS_INFO_SOCIAL_NETWORK_SORT_ORDER;
         $this->enabled = (MODULE_PRODUCTS_INFO_SOCIAL_NETWORK_STATUS == 'True');
       }
@@ -44,8 +44,8 @@
         $content_width = (int)MODULE_PRODUCTS_INFO_SOCIAL_NETWORK_CONTENT_WIDTH;
         $text_position = MODULE_PRODUCTS_INFO_SOCIAL_NETWORK_POSITION;
 
-        if (defined('MODULE_SOCIAL_BOOKMARKS_INSTALLED')) {
-          if ($CLICSHOPPING_ProductsCommon->getID() && defined('MODULE_SOCIAL_BOOKMARKS_INSTALLED') && !is_null(MODULE_SOCIAL_BOOKMARKS_INSTALLED)) {
+        if (\defined('MODULE_SOCIAL_BOOKMARKS_INSTALLED')) {
+          if ($CLICSHOPPING_ProductsCommon->getID() && \defined('MODULE_SOCIAL_BOOKMARKS_INSTALLED') && !\is_null(MODULE_SOCIAL_BOOKMARKS_INSTALLED)) {
             $sbm_array = explode(';', MODULE_SOCIAL_BOOKMARKS_INSTALLED);
 
             $social_bookmarks = [];
@@ -99,7 +99,7 @@
     }
 
     public function check() {
-      return defined('MODULE_PRODUCTS_INFO_SOCIAL_NETWORK_STATUS');
+      return \defined('MODULE_PRODUCTS_INFO_SOCIAL_NETWORK_STATUS');
     }
 
     public function install() {

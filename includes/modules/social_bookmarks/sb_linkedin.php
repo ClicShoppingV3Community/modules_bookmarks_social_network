@@ -15,7 +15,7 @@
 
   class sb_linkedin
   {
-    public $code;
+    public string $code;
     public string $title;
     public string $description;
     public ?int $sort_order = 0;
@@ -32,7 +32,7 @@
       $this->public_title = CLICSHOPPING::getDef('module_social_bookmarks_linkedin_public_title');
       $this->description = CLICSHOPPING::getDef('module_social_bookmarks_linkedin_description');
 
-      if (defined('MODULE_SOCIAL_BOOKMARKS_LINKEDIN_STATUS')) {
+      if (\defined('MODULE_SOCIAL_BOOKMARKS_LINKEDIN_STATUS')) {
         $this->sort_order = MODULE_SOCIAL_BOOKMARKS_LINKEDIN_SORT_ORDER;
         $this->enabled = (MODULE_SOCIAL_BOOKMARKS_LINKEDIN_STATUS == 'True');
       }
@@ -61,7 +61,7 @@
 
     public function check()
     {
-      return defined('MODULE_SOCIAL_BOOKMARKS_LINKEDIN_STATUS');
+      return \defined('MODULE_SOCIAL_BOOKMARKS_LINKEDIN_STATUS');
     }
 
     public function install()

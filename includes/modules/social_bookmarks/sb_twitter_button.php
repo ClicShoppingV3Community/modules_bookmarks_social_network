@@ -16,7 +16,7 @@
 
   class sb_twitter_button
   {
-    public $code;
+    public string $code;
     public string $title;
     public string $description;
     public ?int $sort_order = 0;
@@ -33,7 +33,7 @@
       $this->public_title = CLICSHOPPING::getDef('module_social_bookmarks_twitter_button_public_title');
       $this->description = CLICSHOPPING::getDef('module_social_bookmarks_twitter_button_description');
 
-      if (defined('MODULE_SOCIAL_BOOKMARKS_TWITTER_BUTTON_STATUS')) {
+      if (\defined('MODULE_SOCIAL_BOOKMARKS_TWITTER_BUTTON_STATUS')) {
         $this->sort_order = MODULE_SOCIAL_BOOKMARKS_TWITTER_BUTTON_SORT_ORDER;
         $this->enabled = (MODULE_SOCIAL_BOOKMARKS_TWITTER_BUTTON_STATUS == 'True');
       }
@@ -79,7 +79,7 @@
 
     public function check()
     {
-      return defined('MODULE_SOCIAL_BOOKMARKS_TWITTER_BUTTON_STATUS');
+      return \defined('MODULE_SOCIAL_BOOKMARKS_TWITTER_BUTTON_STATUS');
     }
 
     public function install()

@@ -16,7 +16,7 @@
 
   class sb_pinterest
   {
-    public $code;
+    public string $code;
     public string $title;
     public string $description;
     public ?int $sort_order = 0;
@@ -32,7 +32,7 @@
       $this->public_title = CLICSHOPPING::getDef('module_social_bookmarks_pinterest_public_title');
       $this->description = CLICSHOPPING::getDef('module_social_bookmarks_pinterest_description');
 
-      if (defined('MODULE_SOCIAL_BOOKMARKS_PINTEREST_STATUS')) {
+      if (\defined('MODULE_SOCIAL_BOOKMARKS_PINTEREST_STATUS')) {
         $this->sort_order = MODULE_SOCIAL_BOOKMARKS_PINTEREST_SORT_ORDER;
         $this->enabled = (MODULE_SOCIAL_BOOKMARKS_PINTEREST_STATUS == 'True');
       }
@@ -106,7 +106,7 @@
 
     public function check()
     {
-      return defined('MODULE_SOCIAL_BOOKMARKS_PINTEREST_STATUS');
+      return \defined('MODULE_SOCIAL_BOOKMARKS_PINTEREST_STATUS');
     }
 
     public function install()
